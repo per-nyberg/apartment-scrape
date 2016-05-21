@@ -1,11 +1,22 @@
 require 'httparty'
 require 'nokogiri'
 require 'json'
-require 'pry'
 require 'csv'
 
 # page to scrape
-# alternative page: https://www.blocket.se/stockholm?q=l%C3%A4genhet&cg=0&w=1&st=s&c=&ca=11&is=1&l=0&md=th
-page = HTTParty.get('https://newyork.craigslist.org/search/pet?s=0')
+page = HTTParty.get('https://www.blocket.se/stockholm?q=l%C3%A4genhet&cg=0&w=1&st=s&c=&ca=11&is=1&l=0&md=th')
 
-Pry.start(binding)
+# parsed page
+parsed_page = Nokogiri::HTML(page)
+
+# an array for storing apartments
+apartments_arr = []
+
+# parsing page data
+parsed_page.css('#item_list').css('.item_link').map do |a|
+	post_name = a.text
+	apartments_arr.push(post_name)
+end
+
+puts apartments_arr
+
