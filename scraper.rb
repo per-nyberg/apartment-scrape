@@ -1,0 +1,5 @@
+require 'httparty'
+require 'nokogiri'
+require 'json'
+require 'pry'
+require 'csv'
