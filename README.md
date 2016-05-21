@@ -1,1 +1,1 @@
-explorative project, who knows what will happen
+Using Nokogiri to scrape some interesting information
