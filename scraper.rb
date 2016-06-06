@@ -15,7 +15,9 @@ apartments_arr = []
 # parsing page data
 parsed_page.css('#item_list').css('.item_link').map do |a|
 	post_name = a.text
-	apartments_arr.push(post_name)
+	if post_name.include? "Stockholm"
+		apartments_arr.push(post_name)
+	end
 end
 
 puts apartments_arr
